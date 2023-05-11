@@ -12,18 +12,18 @@ pub struct Env {
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct Config {
-    install_path: String,
-    appdata_path: String,
-    campaign_name: String,
+    pub install_dir: String,
+    pub app_data_dir: String,
+    pub campaign_name: String,
 }
 
 impl Config {
     pub fn default<'a>() -> Config {
         let env: Env = from_env().expect("Couldn't deserialise environment");
         Config {
-            install_path: r#"C:\Program Files (x86)\Steam\steamapps\common\Beat Saber"#.to_string(),
+            install_dir: r#"C:\Program Files (x86)\Steam\steamapps\common\Beat Saber"#.to_string(),
             campaign_name: "Acc Champ Community Campaign".to_string(),
-            appdata_path: format!(
+            app_data_dir: format!(
                 r#"{}\AppData\LocalLow\Hyperbolic Magnetism\Beat Saber"#,
                 env.home
             ),
