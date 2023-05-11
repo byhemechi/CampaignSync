@@ -1,3 +1,8 @@
+mod campaign;
+mod config;
+
 fn main() {
-    println!("Hello, world!");
+    let config = config::Config::from_file();
+
+    println!("{:?}", config)
 }
